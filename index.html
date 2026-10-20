@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="theme-color" content="#0c151d">
+ <meta name="description" content="Explorador 3D de la mecánica de la antena europea ALMA AEM de 12 metros. Reconstrucción técnica documentada con 16 sistemas identificables.">
+ <title>AEM 12 m — Atlas mecánico 3D</title>
+ <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c151d'/%3E%3Cpath d='M12 21Q32 47 52 21M32 34V53M21 53h22M18 21l14-9 14 9' fill='none' stroke='%236edbc7' stroke-width='3'/%3E%3C/svg%3E">
+ <link rel="stylesheet" href="./styles.css">
+ <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+ <header class="topbar">
+  <a class="brand" href="./" aria-label="Atlas mecánico, inicio"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M5 12q13 19 26 0M18 24v9M10 33h16M9 12l9-8 9 8"/></svg><span>ALMA<span class="brand-divider">/</span><b>ENGINEERING ATLAS</b></span></a>
+  <div class="top-context"><span class="live-dot"></span> EXPLORADOR MECÁNICO <span class="top-version">AEM · 02</span></div>
+  <div class="top-actions"><button id="sources-button" class="text-button"><span>⌑</span> Documentación</button><button id="capture" class="icon-button" title="Guardar imagen PNG" aria-label="Guardar imagen PNG">↗</button><button id="help-button" class="icon-button" aria-label="Ayuda">?</button></div>
+ </header>
+ <main class="workspace">
+  <aside class="catalog">
+   <div class="catalog-header"><div class="eyebrow">ANTENA EUROPEA · ALMA</div><h1>AEM <span>12 m</span></h1><p>La ingeniería, bajo la superficie.</p></div>
+   <div class="catalog-tabs"><span class="active">COMPONENTES</span><span class="count">16</span></div>
+   <label class="search"><svg viewBox="0 0 20 20"><circle cx="8" cy="8" r="5"/><path d="m12 12 5 5"/></svg><input id="search" type="search" placeholder="Buscar un componente…" aria-label="Buscar componentes"><kbd>/</kbd></label>
+   <nav id="parts-list" aria-label="Componentes mecánicos"></nav>
+   <div class="catalog-footer"><span class="small-dot"></span><span>1 unidad de modelo = 1 metro<br><b>Reconstrucción técnica documentada</b></span><button id="precision-button" title="Ver alcance de precisión" aria-label="Ver alcance de precisión">ⓘ</button></div>
+  </aside>
+  <section class="viewer" aria-label="Visor 3D interactivo">
+   <div id="scene"></div><div id="labels" aria-hidden="true"></div>
+   <div class="viewer-top"><div class="view-selector" role="group" aria-label="Modo de visualización"><button data-mode="exterior" class="active">Exterior</button><button data-mode="xray">Interior</button><button data-mode="section">Corte</button><button data-mode="exploded">Despiece</button></div><span class="webgl-badge"><i></i>3D EN TIEMPO REAL</span></div>
+   <div class="scene-caption"><span class="eyebrow" id="view-kicker">01 / CONJUNTO GENERAL</span><h2 id="view-title">Precisión en cada movimiento.</h2><p id="view-description">Explora los sistemas que orientan un reflector de 12 metros.</p></div>
+   <div class="view-tools" role="group" aria-label="Herramientas del visor"><button id="home-view" title="Restablecer vista" aria-label="Restablecer vista">⌂</button><span></span><button id="labels-toggle" class="active" title="Mostrar u ocultar etiquetas" aria-label="Etiquetas" aria-pressed="true">Aa</button><button id="dimensions-toggle" title="Mostrar dimensiones documentadas" aria-label="Cotas" aria-pressed="false">↔</button><button id="grid-toggle" class="active" title="Mostrar cuadrícula" aria-label="Cuadrícula" aria-pressed="true">⊞</button><span></span><button id="front-view" title="Vista frontal" aria-label="Vista frontal">F</button><button id="side-view" title="Vista lateral" aria-label="Vista lateral">L</button><button id="top-view" title="Vista superior" aria-label="Vista superior">S</button></div>
+   <div class="orientation"><svg viewBox="0 0 70 65"><path d="M35 40V8" stroke="#78d5c4"/><path d="M35 40 8 54" stroke="#e3a777"/><path d="m35 40 25 14" stroke="#88b7d3"/><text x="32" y="7" fill="#78d5c4">Y</text><text x="2" y="62" fill="#e3a777">X</text><text x="61" y="63" fill="#88b7d3">Z</text></svg><span>METROS · Y ARRIBA</span></div>
+   <div class="scene-bottom"><span><b class="mouse-icon">◉</b> Arrastra para orbitar <span class="hint-sep">·</span> Rueda para acercar</span><div class="scale-bar"><span></span><b id="scale-label">2 m</b></div></div>
+   <div class="mode-note" id="mode-note" hidden></div>
+   <div class="loading" id="loading"><div class="loading-orbit"></div><span>Construyendo la antena…</span></div>
+   <div class="error-panel" id="error-panel" hidden><h2>El visor necesita WebGL 2</h2><p>Activa la aceleración gráfica del navegador y vuelve a cargar la página.</p><button onclick="location.reload()">Volver a intentar</button></div>
+  </section>
+  <aside class="inspector" id="inspector">
+   <div class="inspector-heading"><span class="eyebrow">FICHA DEL SISTEMA</span><span id="part-index">A06 / 16</span></div>
+   <div class="part-symbol" id="part-symbol">◎</div><div class="part-kind" id="part-kind"></div><h2 id="part-name"></h2><p class="english-name" id="part-en"></p>
+   <div class="part-material"><span>MATERIAL</span><b id="part-material"></b></div>
+   <div class="inspector-actions"><button id="focus-part">◎ Centrar pieza</button><button id="isolate-part">◇ Aislar</button></div>
+   <button id="shutter-button" class="wide-button" hidden>Abrir obturador</button>
+   <div class="inspector-tabs" role="tablist" aria-label="Información del componente"><button id="description-tab" role="tab" aria-selected="true" aria-controls="description-pane" class="active">Descripción</button><button id="operation-tab" role="tab" aria-selected="false" aria-controls="operation-pane" tabindex="-1">Cómo funciona <span>03</span></button></div>
+   <div id="description-pane" role="tabpanel" aria-labelledby="description-tab">
+    <section class="inspector-section"><h3>Qué es</h3><p id="part-description"></p></section>
+    <section class="inspector-section"><h3>Para qué sirve</h3><p id="part-function"></p></section>
+    <section class="system-role"><span>ROL EN LA ANTENA</span><p id="part-role"></p><div id="part-behavior"></div></section>
+   </div>
+   <div id="operation-pane" role="tabpanel" aria-labelledby="operation-tab" hidden>
+    <section class="inspector-section"><h3>Principio de funcionamiento</h3><p id="part-principle"></p></section>
+    <ol class="operation-steps" id="part-steps"></ol>
+    <section class="element-section"><h3>Elementos del conjunto</h3><div id="part-elements"></div></section>
+    <p id="part-key" class="principle-key"></p>
+   </div>
+   <section class="related-systems"><h3>Trabaja junto a</h3><div id="part-relations"></div></section>
+   <details class="construction-detail"><summary>Detalle representado en 3D</summary><p id="part-detail"></p></details>
+   <section class="inspection-note"><h3><span>◌</span> Puntos de inspección</h3><p id="part-inspect"></p></section>
+   <div class="evidence-note"><span>TRAZABILIDAD</span><p id="part-evidence"></p><a id="part-source" target="_blank" rel="noopener">Informe técnico <span>↗</span></a></div>
+   <div class="inspector-nav"><button id="prev-part" aria-label="Componente anterior">←</button><span id="nav-position">06 de 16</span><button id="next-part" aria-label="Componente siguiente">→</button></div>
+  </aside>
+  <section class="motion-panel" aria-label="Controles cinemáticos">
+   <div class="motion-intro"><span class="eyebrow">CINEMÁTICA</span><strong>Del par al apuntado.</strong><span class="motion-status" id="motion-status">SIMULACIÓN ILUSTRATIVA</span></div>
+   <div class="axis-control"><label for="azimuth"><span class="axis-dot az"></span>AZIMUT <output id="azimuth-value">0.0°</output></label><input id="azimuth" type="range" min="-180" max="180" value="0" step="0.1"><div class="range-ends"><span>−180°</span><span>+180°</span></div></div>
+   <div class="axis-control"><label for="elevation"><span class="axis-dot el"></span>ELEVACIÓN <output id="elevation-value">65.0°</output></label><input id="elevation" type="range" min="15" max="90" value="65" step="0.1"><div class="range-ends"><span>15°</span><span>90°</span></div></div>
+   <div class="axis-control focus-control"><label for="focus"><span class="axis-dot hex"></span>HEXÁPODO <output id="focus-value">0 mm</output></label><input id="focus" type="range" min="-30" max="30" value="0" step="1"><div class="range-ends"><span>−30 mm</span><span>+30 mm · visual ×10</span></div></div>
+   <div class="motion-actions"><button id="animate" aria-pressed="false"><span>▶</span> Animar</button><button id="reset-motion" title="Restablecer posición" aria-label="Restablecer posición">↺</button></div>
+  </section>
+ </main>
+ <dialog id="sources-dialog"><div class="dialog-top"><span class="eyebrow">DOCUMENTACIÓN Y ALCANCE</span><button class="close-dialog" aria-label="Cerrar">×</button></div><h2>Geometría con trazabilidad.</h2><p class="dialog-lead">Un modelo a escala del conjunto, con reconstrucción explícita de los detalles no publicados.</p><div class="source-grid"><figure><img src="./assets/aem-reference.jpg" alt="Antena AEM de 12 metros, fotografía de referencia"><figcaption>Referencia exterior · crédito NAOJ · informe, p. 16</figcaption></figure><figure><a href="./assets/aem-drawing.jpg" target="_blank"><img src="./assets/aem-drawing.jpg" alt="Plano general oficial ESO y AEM con tres vistas de la antena"></a><figcaption>Plano antd-3300000 · ESO/AEM Consortium · 2012</figcaption></figure></div><div class="precision-columns"><section><h3><i class="dot doc"></i> Documentado</h3><p>Reflector Ø 12 m, subreflector Ø 750 mm, 120 paneles en 5 anillos, cuadrípode diagonal, accionamiento directo segmentado, rodamiento AZ de tres hileras, encoder AZ con ocho cabezales, cabina y BUS de CFRP, hexápodo de seis patas.</p></section><section><h3><i class="dot approx"></i> Reconstruido</h3><p>Dimensiones de montura y cabina, focal de 4,8 m, posición del secundario, reparto de paneles por anillo, apoyos ilustrativos, topología interna, tornillería, frenos, ductos y cable wrap. No se dispone de cotas ni tolerancias OEM de estas piezas.</p></section></div><div class="precision-callout">El informe es una guía de estudio y sus esquemas internos son de principio, sin escala. Este modelo es una reconstrucción geométrica y cinemática: no está conectado a sensores, no tiene validación metrológica y no constituye un gemelo digital certificado ni un plano de fabricación.</div><div class="source-links"><a href="./assets/informe.pdf#page=16" target="_blank">Abrir informe local ↗</a><a href="https://www.eso.org/public/images/antd-3300000/" target="_blank" rel="noopener">Plano oficial ESO ↗</a><a href="https://www.eso.org/sci/publications/messenger/archive/no.130-dec07/messenger-no130.pdf#page=16" target="_blank" rel="noopener">Diseño de producción · 2007 ↗</a><a href="https://www.eso.org/sci/libraries/SPIE2016/9906-213.pdf" target="_blank" rel="noopener">Operación AEM · 2016 ↗</a></div><div class="export-row"><span>Modelo en metros · ejes y piezas conservados</span><button id="export-glb">↓ Exportar modelo GLB</button><a href="./specification.json" download>↓ Ficha de parámetros</a></div></dialog>
+ <dialog id="help-dialog"><div class="dialog-top"><span class="eyebrow">CONTROLES DEL EXPLORADOR</span><button class="close-dialog" aria-label="Cerrar">×</button></div><h2>Explora desde cualquier ángulo.</h2><p>Arrastra con el botón izquierdo para orbitar y usa la rueda para acercarte. El botón derecho desplaza la vista. En una pantalla táctil, gira con un dedo y acerca con dos.</p><div class="help-keys"><p><kbd>Clic</kbd> Seleccionar una pieza en el modelo</p><p><kbd>Doble clic</kbd> Centrar la pieza</p><p><kbd>/</kbd> Buscar un sistema</p><p><kbd>Esc</kbd> Salir del aislamiento</p><p><kbd>H</kbd> Restablecer cámara</p></div><p><b>Interior</b> vuelve transparentes las envolventes. <b>Corte</b> retira media antena según un plano fijo de la escena. <b>Despiece</b> separa los conjuntos: las distancias de separación son ilustrativas.</p><p>Los controles AZ / EL muestran movimientos geométricos. Sus rangos son de demostración. El enfoque del hexápodo se amplifica ×10 para verlo a escala de la antena; no representa una carrera OEM.</p></dialog>
+ <div id="toast" role="status" aria-live="polite"></div>
+ <script type="module" src="./app.js"></script>
+</body></html>
+

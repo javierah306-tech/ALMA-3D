@@ -1,0 +1,839 @@
+{
+  "title": "AEM 12m - reconstruccion tecnica",
+  "units": "metres",
+  "scope": "Geometric and kinematic reconstruction; not an as-built CAD or sensor-linked digital twin",
+  "documented": {
+    "primaryDiameter": 12,
+    "secondaryDiameter": 0.75,
+    "panelCount": 120,
+    "ringCount": 5,
+    "quadripod": "diagonal",
+    "axisDrives": "segmented direct",
+    "AZbearing": "three roller rows",
+    "AZencoderReadHeads": 8,
+    "hexapodLegs": 6
+  },
+  "reconstructed": {
+    "focalLength": 4.8,
+    "axisHeight": 5.3,
+    "vertexOffset": 1.25,
+    "secondaryOffset": 4.85,
+    "cabinRadius": 1.63,
+    "cabinLength": 2.6,
+    "panelRings": [
+      12,
+      18,
+      24,
+      30,
+      36
+    ],
+    "ringRadii": [
+      0.7,
+      1.76,
+      2.82,
+      3.88,
+      4.94,
+      6
+    ]
+  },
+  "focusDisplayMultiplier": 10,
+  "motionRangesAreIllustrative": true,
+  "parts": [
+    {
+      "id": "A01",
+      "name": "Pedestal e interfaz de apoyo",
+      "short": "Pedestal",
+      "en": "Pedestal & foundation interface",
+      "category": "Montura",
+      "page": 18,
+      "material": "Acero estructural",
+      "tag": "Estructura",
+      "function": "Recibe las cargas de la montura y las transmite a la fundación. Su interfaz establece la referencia fija del conjunto.",
+      "detail": "Base troncocónica y tres interfaces de apoyo. Placas, rigidizadores, uniones y accesos reconstruidos a partir de la forma exterior del plano.",
+      "evidence": "Arquitectura documentada; cotas, anclajes y espesores reconstruidos.",
+      "inspect": "Asientos, corrosión, fisuras, fijaciones y desplazamiento relativo.",
+      "color": "#aabcc9",
+      "education": {
+        "description": "Conjunto fijo de base, placas de apoyo, rigidizadores y uniones a la fundación. Es el primer elemento de la antena en contacto estructural con la estación.",
+        "role": "Cierra el camino de cargas hacia el terreno y conserva una referencia estable para el eje vertical de azimut.",
+        "principle": "Trabaja por rigidez y transmisión de esfuerzos. Sus superficies de apoyo y uniones resisten fuerzas y momentos sin permitir desplazamientos relativos apreciables.",
+        "steps": [
+          [
+            "Recibir",
+            "El rodamiento entrega a la base el peso de la parte móvil y las acciones del viento."
+          ],
+          [
+            "Repartir",
+            "La envolvente y los rigidizadores distribuyen los esfuerzos hacia las interfaces de apoyo."
+          ],
+          [
+            "Transmitir",
+            "Los apoyos y sus fijaciones llevan las reacciones a la fundación. La base permanece inmóvil durante el apuntado."
+          ]
+        ],
+        "elements": [
+          "Base de acero",
+          "Rigidizadores",
+          "Placas de apoyo",
+          "Anclajes e interfaces"
+        ],
+        "relation": [
+          "A03",
+          "A02"
+        ],
+        "behavior": "Conjunto fijo · transmisión de cargas",
+        "key": "La estabilidad del terreno y de las uniones también afecta la orientación de toda la antena."
+      }
+    },
+    {
+      "id": "A02",
+      "name": "Horquilla y apoyos de elevación",
+      "short": "Horquilla y apoyos EL",
+      "en": "Yoke & elevation bearing supports",
+      "category": "Montura",
+      "page": 18,
+      "material": "Acero / apoyos mecánicos",
+      "tag": "Estructura",
+      "function": "Sostiene la cabina y el reflector. Los apoyos coaxiales permiten la rotación de elevación y transfieren las cargas a la montura.",
+      "detail": "Dos brazos con placas de unión, rigidizadores y muñones. El conjunto inclinable gira como un sólido alrededor del eje EL.",
+      "evidence": "Disposición exterior según plano; sección de apoyos y detalles internos representativos.",
+      "inspect": "Alineación, sellos, holguras, asientos y variación de fricción.",
+      "color": "#d6e2ea",
+      "education": {
+        "description": "Montura de dos brazos con apoyos coaxiales y muñones de elevación. Rodea la cabina y sostiene el conjunto inclinable sin ocupar la abertura del reflector.",
+        "role": "Une la estructura que gira en azimut con la estructura que bascula en elevación y conserva la posición del eje EL.",
+        "principle": "La horquilla gira con AZ. Los apoyos permiten que la cabina y el reflector giren alrededor de un eje horizontal común, mientras los brazos conducen las cargas a la base giratoria.",
+        "steps": [
+          [
+            "Sostener",
+            "Los muñones reciben las reacciones de la cabina, del plato y del soporte del secundario."
+          ],
+          [
+            "Guiar",
+            "Los apoyos conservan la coaxialidad durante el movimiento de elevación."
+          ],
+          [
+            "Descargar",
+            "Los brazos y el travesaño transfieren las fuerzas y momentos al conjunto de azimut."
+          ]
+        ],
+        "elements": [
+          "Brazos de horquilla",
+          "Muñones EL",
+          "Asientos y apoyos",
+          "Placas de unión"
+        ],
+        "relation": [
+          "A11",
+          "A04",
+          "A03"
+        ],
+        "behavior": "Gira en AZ · soporta el eje EL",
+        "key": "El motor produce el par; los apoyos y la horquilla sostienen la carga. Son funciones diferentes."
+      }
+    },
+    {
+      "id": "A03",
+      "name": "Rodamiento de azimut",
+      "short": "Rodamiento AZ",
+      "en": "Three-row azimuth roller bearing",
+      "category": "Accionamiento",
+      "page": 19,
+      "material": "Acero para rodamientos",
+      "tag": "Apoyo de giro",
+      "function": "Guía el movimiento de azimut y transmite carga axial, carga radial y momento de vuelco entre la base y la montura giratoria.",
+      "detail": "Tres hileras de rodillos: dos axiales y una radial. Se muestran pistas, rodillos, bridas y fijaciones para estudiar la transmisión de cargas.",
+      "evidence": "Tres hileras documentadas. Diámetros, número de rodillos, precarga y perfil de pistas no disponibles.",
+      "inspect": "Sellado, condición del lubricante, juego, ruido, temperatura y par resistente.",
+      "color": "#82b8cb",
+      "education": {
+        "description": "Apoyo circular entre la parte fija y la montura giratoria. El diseño AEM de producción emplea un rodamiento de tres hileras de rodillos para el eje de azimut.",
+        "role": "Permite el giro AZ y mantiene su referencia geométrica mientras transmite cargas axiales, radiales y momento de vuelco.",
+        "principle": "Los elementos rodantes ruedan entre pistas. La disposición de hileras permite reaccionar distintas componentes de carga con menor resistencia que un contacto deslizante equivalente.",
+        "steps": [
+          [
+            "Aplicar carga",
+            "La montura entrega peso, fuerzas laterales y momento de vuelco a las pistas."
+          ],
+          [
+            "Rodar",
+            "Los rodillos transmiten las reacciones entre pistas al producirse el movimiento relativo."
+          ],
+          [
+            "Conservar el eje",
+            "La rigidez del conjunto y la condición de sus asientos limitan desplazamientos del eje de apuntado."
+          ]
+        ],
+        "elements": [
+          "Pistas anulares",
+          "Tres hileras de rodillos",
+          "Bridas y fijaciones",
+          "Sellos de protección"
+        ],
+        "relation": [
+          "A01",
+          "A02",
+          "A04"
+        ],
+        "behavior": "Giro relativo · soporte de carga",
+        "key": "El rodamiento no impulsa la antena. La ilustración de sus rodillos no fija una cantidad ni una precarga OEM."
+      }
+    },
+    {
+      "id": "A04",
+      "name": "Accionamiento directo AZ / EL",
+      "short": "Motores directos AZ / EL",
+      "en": "Segmented direct axis drives",
+      "category": "Accionamiento",
+      "page": 19,
+      "material": "Acero / cobre / imanes",
+      "tag": "Movimiento",
+      "function": "Aplica par directamente a los ejes, mediante interacción electromagnética entre estator y rotor. No incorpora una reducción de engranajes en el eje principal.",
+      "detail": "Segmentos de estator, anillo de rotor y entrehierro visible. Los motores EL están alineados con los apoyos de la horquilla.",
+      "evidence": "Arquitectura directa segmentada documentada. Cantidad y geometría de segmentos ilustrativas.",
+      "inspect": "Entrehierro, concentricidad, fijaciones y corriente a igual posición, viento y temperatura.",
+      "color": "#e5ae69",
+      "education": {
+        "description": "Motores de accionamiento directo distribuidos en sectores alrededor de los ejes. Estator y rotor están separados por un entrehierro y vinculados a las partes fija y móvil.",
+        "role": "Convierte la orden del control en par para acelerar, orientar y seguir una trayectoria con el reflector.",
+        "principle": "La corriente controlada en los devanados crea una interacción magnética con el rotor. El esfuerzo tangencial se aplica al eje directamente; el encoder aporta la posición para cerrar el lazo.",
+        "steps": [
+          [
+            "Ordenar",
+            "El control compara el ángulo solicitado con la posición medida por el encoder."
+          ],
+          [
+            "Generar par",
+            "Los sectores electromagnéticos producen fuerza tangencial a través del entrehierro."
+          ],
+          [
+            "Mover y corregir",
+            "El rotor arrastra la estructura móvil y la medición angular permite corregir el seguimiento."
+          ]
+        ],
+        "elements": [
+          "Sectores de estator",
+          "Rotor",
+          "Entrehierro",
+          "Fijaciones y conexiones"
+        ],
+        "relation": [
+          "A13",
+          "A03",
+          "A02"
+        ],
+        "behavior": "Energía eléctrica → par → movimiento",
+        "key": "Accionamiento directo no significa levitación ni ausencia de apoyos mecánicos."
+      }
+    },
+    {
+      "id": "A05",
+      "name": "Estructura posterior del reflector",
+      "short": "Estructura posterior · BUS",
+      "en": "Carbon-fibre back-up structure",
+      "category": "Reflector y óptica",
+      "page": 20,
+      "material": "CFRP / interfaces de baja dilatación",
+      "tag": "Estructura",
+      "function": "Mantiene la geometría del reflector frente a gravedad, viento y cambios térmicos; recibe las cargas de los paneles a través de sus ajustadores.",
+      "detail": "Costillas radiales, anillos de unión y celosía posterior, cubiertos por una envolvente exterior clara. El modo interior revela la estructura de soporte.",
+      "evidence": "Material y función documentados. Topología interior y secciones reconstruidas, no CAD OEM.",
+      "inspect": "Impactos, delaminación, despegados e integridad de las uniones.",
+      "color": "#75949d",
+      "education": {
+        "description": "Estructura posterior o BUS que une los apoyos del reflector con la cabina. En AEM se emplea CFRP con interfaces de baja dilatación para conservar la geometría.",
+        "role": "Mantiene los 120 paneles en una forma global estable y limita las deformaciones que alterarían la superficie reflectora.",
+        "principle": "Anillos, elementos resistentes y sus interfaces distribuyen las cargas de los apoyos. La rigidez y la estabilidad térmica reducen cambios de forma frente a gravedad, viento y temperatura.",
+        "steps": [
+          [
+            "Recibir",
+            "Los ajustadores entregan a la BUS las cargas locales de los paneles."
+          ],
+          [
+            "Distribuir",
+            "La estructura reparte las solicitaciones y limita la deformación relativa entre apoyos."
+          ],
+          [
+            "Transferir",
+            "Las interfaces llevan las cargas a la cabina y al conjunto de elevación."
+          ]
+        ],
+        "elements": [
+          "Estructura de CFRP",
+          "Anillos y elementos resistentes",
+          "Interfaces de unión",
+          "Envolventes protectoras"
+        ],
+        "relation": [
+          "A07",
+          "A06",
+          "A11"
+        ],
+        "behavior": "Soporte pasivo · estabilidad dimensional",
+        "key": "Su topología interna está reconstruida: la estabilidad de una BUS real requiere cálculo y verificación metrológica."
+      }
+    },
+    {
+      "id": "A06",
+      "name": "Paneles del reflector primario",
+      "short": "Reflector primario",
+      "en": "Primary reflector sandwich panels",
+      "category": "Reflector y óptica",
+      "page": 20,
+      "material": "Piel electroformada / panal de aluminio",
+      "tag": "Óptica",
+      "function": "Los 120 paneles forman la superficie reflectora de 12 m y conducen la radiación hacia el subreflector.",
+      "detail": "Superficie parabólica segmentada en cinco anillos. El sándwich de piel y núcleo ligero se distingue de un panel de aluminio macizo.",
+      "evidence": "12 m, 120 paneles y 5 anillos documentados. Reparto por anillo, hueco central, juntas y focal reconstruidos.",
+      "inspect": "Acabado, golpes, corrosión, fijaciones y mapa de superficie por holografía.",
+      "color": "#e6eef3",
+      "education": {
+        "description": "Superficie primaria de 12 metros formada por 120 paneles dispuestos en cinco anillos. Los paneles AEM son sándwich: piel reflectora electroformada y núcleo ligero de panal de aluminio.",
+        "role": "Recoge la radiación incidente sobre una gran abertura y la dirige hacia el subreflector.",
+        "principle": "La forma parabólica define las direcciones de reflexión. La piel aporta la superficie óptica y el núcleo separa las caras para lograr rigidez con poca masa. Los ajustadores establecen la posición de cada panel.",
+        "steps": [
+          [
+            "Captar",
+            "La radiación alcanza los paneles a lo largo de la abertura del plato."
+          ],
+          [
+            "Reflejar",
+            "La orientación y la curvatura local de la superficie conducen la energía hacia el secundario."
+          ],
+          [
+            "Conservar la figura",
+            "BUS y ajustadores mantienen la posición relativa de los paneles; la holografía verifica el error de superficie."
+          ]
+        ],
+        "elements": [
+          "Piel reflectora",
+          "Núcleo de panal",
+          "Juntas entre paneles",
+          "Interfaces con ajustadores"
+        ],
+        "relation": [
+          "A09",
+          "A07",
+          "A05"
+        ],
+        "behavior": "Radiación incidente → reflexión al secundario",
+        "key": "El brillo del material no demuestra precisión óptica. El error de superficie se verifica mediante medición."
+      }
+    },
+    {
+      "id": "A07",
+      "name": "Ajustadores y apoyos de panel",
+      "short": "Ajustadores de panel",
+      "en": "Panel adjusters & supports",
+      "category": "Reflector y óptica",
+      "page": 21,
+      "material": "Metal / protección elastomérica",
+      "tag": "Ajuste",
+      "function": "Transmiten la carga de cada panel a la BUS y permiten corregir su posición local a partir de mediciones de superficie.",
+      "detail": "Vástagos, asientos, tuercas y fuelles protectores bajo los paneles. Se ilustra un apoyo por panel para mantener legible el modelo.",
+      "evidence": "Función y protecciones documentadas; el número real de apoyos por panel no está confirmado.",
+      "inspect": "Fijación, agarrotamiento, corrosión y estado de protecciones.",
+      "color": "#c0a17c",
+      "education": {
+        "description": "Interfaces regulables entre los paneles y la BUS. Incluyen elementos de apoyo y ajuste, fijaciones y protecciones; su ejecución exacta depende del conjunto instalado.",
+        "role": "Permiten corregir la posición de un panel sin cambiar la geometría de toda la estructura posterior.",
+        "principle": "Un ajuste mecánico modifica el apoyo local y, por tanto, la posición del panel. El modelo representa vástago roscado, asiento, contratuerca y fuelle como explicación del principio de regulación.",
+        "steps": [
+          [
+            "Medir",
+            "El mapa de superficie permite localizar desviaciones de la geometría deseada."
+          ],
+          [
+            "Regular",
+            "Se modifica la posición de los apoyos definidos por el procedimiento de ajuste."
+          ],
+          [
+            "Verificar",
+            "Se asegura la posición y se repite la medición para comprobar el resultado."
+          ]
+        ],
+        "elements": [
+          "Vástago de ajuste",
+          "Asiento de apoyo",
+          "Contratuerca representativa",
+          "Protección elastomérica"
+        ],
+        "relation": [
+          "A06",
+          "A05"
+        ],
+        "behavior": "Regulación local · transmisión de carga",
+        "key": "El modelo muestra un apoyo por panel. No prescribe cantidad real, paso de rosca, vueltas de ajuste ni par de apriete."
+      }
+    },
+    {
+      "id": "A08",
+      "name": "Cuadrípode de soporte",
+      "short": "Cuadrípode diagonal",
+      "en": "Diagonal quadripod / feed support legs",
+      "category": "Reflector y óptica",
+      "page": 21,
+      "material": "CFRP / interfaces metálicas",
+      "tag": "Estructura",
+      "function": "Conserva la posición del subreflector y su mecanismo delante del plato. Su rigidez y estabilidad afectan al enfoque y al camino óptico.",
+      "detail": "Cuatro brazos de sección rectangular en disposición frontal diagonal, con herrajes de extremo y uniones en el ápice.",
+      "evidence": "Configuración diagonal documentada. Secciones, herrajes y posición axial reconstruidos.",
+      "inspect": "Uniones, fisuras, impactos, vibración y cambios de geometría.",
+      "color": "#d3e0e8",
+      "education": {
+        "description": "Cuatro brazos dispuestos en cruz diagonal cuando se mira el plato de frente. Conectan la estructura del reflector con el soporte del mecanismo del subreflector.",
+        "role": "Sostiene el secundario delante del primario y mantiene su alineación con la cabina durante el apuntado.",
+        "principle": "Los brazos y sus uniones resisten cargas combinadas y limitan el movimiento del ápice. La estabilidad del soporte conserva la posición relativa entre primario, hexápodo y secundario.",
+        "steps": [
+          [
+            "Sostener el ápice",
+            "Las uniones superiores reciben las cargas del hexápodo y del subreflector."
+          ],
+          [
+            "Estabilizar",
+            "Los cuatro brazos limitan desplazamientos y vibraciones del mecanismo."
+          ],
+          [
+            "Entregar las cargas",
+            "Las uniones inferiores transmiten los esfuerzos a la estructura del reflector."
+          ]
+        ],
+        "elements": [
+          "Cuatro brazos",
+          "Herrajes inferiores",
+          "Uniones del ápice",
+          "Interfaces del hexápodo"
+        ],
+        "relation": [
+          "A10",
+          "A09",
+          "A05"
+        ],
+        "behavior": "Soporte pasivo · alineación del secundario",
+        "key": "El cuadrípode sostiene el subreflector; la BUS sostiene los paneles del reflector primario."
+      }
+    },
+    {
+      "id": "A09",
+      "name": "Subreflector",
+      "short": "Subreflector · Ø 750 mm",
+      "en": "Cassegrain secondary reflector",
+      "category": "Reflector y óptica",
+      "page": 22,
+      "material": "Aluminio / acabado óptico",
+      "tag": "Óptica",
+      "function": "Recibe la radiación procedente del primario y la devuelve al foco Cassegrain de la cabina.",
+      "detail": "Diámetro de 750 mm y superficie convexa orientada al primario. Solidario a la plataforma móvil del hexápodo.",
+      "evidence": "Diámetro documentado; curvatura óptica y espesor reconstruidos.",
+      "inspect": "Acabado, corrosión, montaje, alineación y respuesta después de la intervención.",
+      "color": "#c5dee6",
+      "education": {
+        "description": "Espejo secundario convexo de 750 mm, montado frente al plato sobre la plataforma móvil del hexápodo.",
+        "role": "Completa el recorrido Cassegrain al devolver hacia la cabina la radiación procedente del reflector primario.",
+        "principle": "La superficie convexa cambia la convergencia del haz y dirige la radiación hacia la entrada central. Su figura, posición e inclinación deben conservar la alineación con el receptor.",
+        "steps": [
+          [
+            "Recibir",
+            "El primario dirige la radiación hacia la región del subreflector."
+          ],
+          [
+            "Redirigir",
+            "La superficie del secundario refleja la energía de vuelta hacia la abertura central."
+          ],
+          [
+            "Alinear",
+            "El hexápodo ajusta su pose para el enfoque y la colimación del sistema."
+          ]
+        ],
+        "elements": [
+          "Superficie reflectora",
+          "Cuerpo del secundario",
+          "Soporte posterior",
+          "Interfaz con plataforma móvil"
+        ],
+        "relation": [
+          "A06",
+          "A10",
+          "A12"
+        ],
+        "behavior": "Segunda reflexión · camino Cassegrain",
+        "key": "La curvatura mostrada es representativa. El diámetro es documentado, pero no se dispone de la prescripción óptica OEM."
+      }
+    },
+    {
+      "id": "A10",
+      "name": "Hexápodo del subreflector",
+      "short": "Hexápodo · 6 actuadores",
+      "en": "Subreflector hexapod mechanism",
+      "category": "Accionamiento",
+      "page": 22,
+      "material": "Acero / aleación ligera",
+      "tag": "Cinemática paralela",
+      "function": "Seis patas regulables coordinan la posición y orientación del subreflector para enfoque y alineación.",
+      "detail": "Plataformas fija y móvil, seis actuadores telescópicos y doce articulaciones. El control de enfoque desplaza la plataforma y recalcula las longitudes de cada pata.",
+      "evidence": "Seis patas y función documentadas. Anclajes, carrera, articulaciones y límites de movimiento ilustrativos.",
+      "inspect": "Repetibilidad, articulaciones, protecciones y coherencia entre posición solicitada y medida.",
+      "color": "#e5ae69",
+      "education": {
+        "description": "Mecanismo paralelo con una plataforma fija, una móvil y seis patas de longitud regulable. El subreflector está unido a la plataforma móvil.",
+        "role": "Corrige la posición y orientación del secundario para mantener el enfoque y la alineación sin mover toda la antena.",
+        "principle": "Cada pata impone una distancia entre dos articulaciones. La combinación coordinada de seis longitudes determina la pose de la plataforma; el principio permite tres traslaciones y tres rotaciones.",
+        "steps": [
+          [
+            "Definir una pose",
+            "Se establece la posición y orientación deseada del secundario."
+          ],
+          [
+            "Coordinar las patas",
+            "La cinemática determina las longitudes compatibles de los seis actuadores."
+          ],
+          [
+            "Posicionar",
+            "Las patas se alargan o acortan y sus articulaciones permiten que la plataforma alcance la nueva pose."
+          ]
+        ],
+        "elements": [
+          "Plataforma fija",
+          "Plataforma móvil",
+          "Seis actuadores",
+          "Articulaciones de extremo"
+        ],
+        "relation": [
+          "A09",
+          "A08"
+        ],
+        "behavior": "Cinemática paralela · seis grados de libertad",
+        "key": "El visor demuestra una traslación axial y actualiza las seis patas. La amplificación ×10 y el rango no son una carrera OEM."
+      }
+    },
+    {
+      "id": "A11",
+      "name": "Cabina Cassegrain",
+      "short": "Cabina del receptor",
+      "en": "CFRP Cassegrain receiver cabin",
+      "category": "Montura",
+      "page": 23,
+      "material": "CFRP / interfaces mecánicas",
+      "tag": "Instrumentación",
+      "function": "Aloja los receptores y mantiene sus interfaces mecánicas y ambientales respecto del reflector y del eje de elevación.",
+      "detail": "Carcasa cilíndrica, bridas, cierre posterior, accesos y plataforma interna. En transparencia se muestra la envolvente del criostato como referencia espacial.",
+      "evidence": "Cabina CFRP documentada; forma proporcionada al plano. Distribución interna e interfaces aproximadas.",
+      "inspect": "Soportes, sellos, entradas de servicio, fijaciones y estabilidad geométrica.",
+      "color": "#bdcdd7",
+      "education": {
+        "description": "Envolvente de CFRP situada detrás del reflector, integrada en el conjunto que gira en elevación. Contiene soportes e interfaces para la instrumentación receptora.",
+        "role": "Conserva la relación geométrica entre receptor, eje EL y reflector, además de proporcionar un volumen ambientalmente protegido.",
+        "principle": "La estructura transmite cargas entre el reflector y sus apoyos. Las interfaces sujetan los equipos y la envolvente, con sellos y servicios térmicos, protege las condiciones de funcionamiento.",
+        "steps": [
+          [
+            "Referenciar",
+            "Las interfaces sitúan la instrumentación respecto del camino óptico."
+          ],
+          [
+            "Sostener",
+            "La cabina recibe las cargas del reflector y de los equipos durante la inclinación."
+          ],
+          [
+            "Proteger",
+            "Cierres, sellos y acondicionamiento ambiental limitan polvo e inestabilidad térmica."
+          ]
+        ],
+        "elements": [
+          "Envolvente de CFRP",
+          "Bridas y soportes",
+          "Accesos y sellos",
+          "Interfaces de instrumentación"
+        ],
+        "relation": [
+          "A02",
+          "A05",
+          "A14",
+          "A12"
+        ],
+        "behavior": "Estructura inclinable · soporte del receptor",
+        "key": "Cabina y criostato son conjuntos distintos. El criostato del visor sólo da contexto espacial a la instrumentación."
+      }
+    },
+    {
+      "id": "A12",
+      "name": "Obturador y membrana de entrada",
+      "short": "Obturador y membrana",
+      "en": "Feed shutter & entrance membrane",
+      "category": "Reflector y óptica",
+      "page": 23,
+      "material": "Membrana / herrajes metálicos",
+      "tag": "Protección",
+      "function": "La membrana permite el paso de la radiación y limita intercambio de aire. El obturador protege la entrada mediante un cierre móvil.",
+      "detail": "Anillo de entrada, membrana y tapa articulada. El botón del inspector permite observar un ciclo de apertura; esa solución cinemática es representativa.",
+      "evidence": "Funciones documentadas. Geometría y mecanismo del obturador no confirmados para la revisión instalada.",
+      "inspect": "Guías o articulaciones, sellado, membrana e indicación de posición.",
+      "color": "#8bcad4",
+      "education": {
+        "description": "Dos elementos de protección de la entrada: una membrana compatible con la radiación de trabajo y un cierre móvil u obturador.",
+        "role": "Protege el volumen de entrada y contribuye al control ambiental de la cabina sin impedir la observación cuando el sistema está abierto.",
+        "principle": "La membrana limita el intercambio de aire mientras deja pasar la radiación especificada. El obturador abre o cierra físicamente la abertura; su posición y sellado deben ser coherentes con el estado requerido.",
+        "steps": [
+          [
+            "Abrir el paso",
+            "El mecanismo retira el cierre móvil de la abertura de recepción."
+          ],
+          [
+            "Mantener la barrera",
+            "La membrana conserva su función ambiental con la entrada disponible para observar."
+          ],
+          [
+            "Proteger la entrada",
+            "Al cerrarse, el obturador vuelve a cubrir la abertura y su posición se comprueba."
+          ]
+        ],
+        "elements": [
+          "Anillo de entrada",
+          "Membrana",
+          "Cierre móvil",
+          "Guía o articulación"
+        ],
+        "relation": [
+          "A11",
+          "A09",
+          "A14"
+        ],
+        "behavior": "Cierre móvil + barrera ambiental",
+        "key": "La bisagra animada explica la función. No identifica la solución instalada en una revisión concreta de la antena."
+      }
+    },
+    {
+      "id": "A13",
+      "name": "Encoder y elementos de metrología",
+      "short": "Encoders y metrología",
+      "en": "Angular encoders & metrology",
+      "category": "Accionamiento",
+      "page": 24,
+      "material": "Cinta / cabezales / sensores",
+      "tag": "Medición",
+      "function": "El encoder mide la posición angular; los sensores térmicos e inclinómetros permiten estudiar las variaciones de geometría y orientación.",
+      "detail": "Cinta AZ con ocho cabezales de lectura, encoder EL y sensores distribuidos. El anillo es de medición, no una corona dentada.",
+      "evidence": "Cinta AZ, ocho cabezales y metrología térmica según publicación de producción de 2007. Montajes reconstruidos.",
+      "inspect": "Estabilidad del soporte, referencia, protección, alineación y coherencia de lecturas.",
+      "color": "#6edbc7",
+      "education": {
+        "description": "Conjunto de medición angular y metrología. Incluye cinta y cabezales de encoder, sensores de temperatura e inclinómetros con interfaces mecánicas estables.",
+        "role": "Informa al control de dónde apunta la antena y aporta mediciones para estudiar deformaciones e inclinación.",
+        "principle": "Los cabezales leen una escala angular. Las mediciones térmicas e inclinaciones alimentan modelos de corrección; la precisión depende también de la estabilidad física de los soportes.",
+        "steps": [
+          [
+            "Leer",
+            "El encoder determina la posición relativa entre escala y cabezales."
+          ],
+          [
+            "Medir el estado",
+            "Los sensores registran temperatura e inclinación en sus ubicaciones de referencia."
+          ],
+          [
+            "Corregir",
+            "El control utiliza la posición y las correcciones de metrología para mejorar el apuntado."
+          ]
+        ],
+        "elements": [
+          "Escala o cinta angular",
+          "Cabezales de lectura",
+          "Sensores térmicos",
+          "Inclinómetros y soportes"
+        ],
+        "relation": [
+          "A04",
+          "A02",
+          "A05"
+        ],
+        "behavior": "Posición y estado → realimentación del control",
+        "key": "El encoder mide; no soporta el peso ni produce el movimiento. Un offset de software no repara un soporte suelto."
+      }
+    },
+    {
+      "id": "A14",
+      "name": "Sistema de control térmico",
+      "short": "Control térmico · HVAC",
+      "en": "Thermal control & HVAC",
+      "category": "Servicios",
+      "page": 24,
+      "material": "Chapa / ductos / aislamiento",
+      "tag": "Servicios",
+      "function": "Limita cambios de temperatura y gradientes que afectan la instrumentación y la estabilidad geométrica.",
+      "detail": "Unidad exterior, rejillas, ventiladores, ductos y equipos de acondicionamiento sobre la plataforma de servicio.",
+      "evidence": "Función y disposición general documentadas; recorrido y dimensiones de ductos ilustrativos.",
+      "inspect": "Caudal, vibración, filtros, aislamiento y diferencias de temperatura.",
+      "color": "#89adbc",
+      "education": {
+        "description": "Equipos de acondicionamiento térmico, aislamiento, ventilación y pasos de aire que atienden los volúmenes instrumentales y sus interfaces.",
+        "role": "Limita temperaturas y gradientes que afectan a los equipos y a la geometría de la antena.",
+        "principle": "El intercambio de calor y la circulación de aire redistribuyen energía térmica. Los sensores permiten comprobar el estado; el efecto depende del caudal, del aislamiento y de las condiciones ambientales.",
+        "steps": [
+          [
+            "Intercambiar calor",
+            "El equipo térmico aporta o retira calor según la necesidad del volumen atendido."
+          ],
+          [
+            "Distribuir",
+            "Ventiladores y ductos conducen el aire para reducir zonas estancadas y gradientes."
+          ],
+          [
+            "Comprobar",
+            "Las temperaturas y el caudal permiten evaluar si el acondicionamiento cumple su función."
+          ]
+        ],
+        "elements": [
+          "Unidad térmica",
+          "Ventiladores y rejillas",
+          "Ductos",
+          "Aislamiento y sensores"
+        ],
+        "relation": [
+          "A11",
+          "A13",
+          "A12"
+        ],
+        "behavior": "Transferencia de calor · estabilidad ambiental",
+        "key": "La disposición de ductos y ventiladores es ilustrativa; el visor no calcula flujo ni temperatura."
+      }
+    },
+    {
+      "id": "A15",
+      "name": "Guiado de cables en rotación",
+      "short": "Guiado de cables · cable wrap",
+      "en": "Compact azimuth cable wrap",
+      "category": "Servicios",
+      "page": 25,
+      "material": "Separadores / cables / abrazaderas",
+      "tag": "Servicios",
+      "function": "Gestiona los cables y servicios durante el giro sin tracción excesiva, roce ni curvaturas inadecuadas.",
+      "detail": "Recorrido compacto en la base, cadena segmentada y mazos diferenciados. Su forma expresa la función; no simula una cadena flexible OEM.",
+      "evidence": "Cable wrap compacto documentado; eslabones y recorrido representativos.",
+      "inspect": "Roce, fatiga, abrazaderas, radios de curvatura y holgura en posiciones extremas.",
+      "color": "#6d9cae",
+      "education": {
+        "description": "Recorrido guiado de cables y servicios en la base giratoria. Organiza la longitud disponible y su curvatura durante el movimiento de azimut.",
+        "role": "Mantiene alimentación, señales y servicios entre las partes fija y móvil sin someterlos a tracción, torsión o roces excesivos.",
+        "principle": "Un recorrido controlado redistribuye la longitud al girar la montura. Separadores, abrazaderas o portacables conservan la posición y los radios de curvatura que admite cada servicio.",
+        "steps": [
+          [
+            "Disponer reserva",
+            "La longitud y el recorrido permiten absorber el movimiento relativo de los extremos."
+          ],
+          [
+            "Acompañar el giro",
+            "La guía reorganiza el recorrido sin cargar directamente los conectores."
+          ],
+          [
+            "Proteger",
+            "Los soportes y separadores evitan enganches, abrasión y curvaturas inadecuadas."
+          ]
+        ],
+        "elements": [
+          "Recorrido de reserva",
+          "Guías o eslabones",
+          "Mazos y separadores",
+          "Abrazaderas y conectores"
+        ],
+        "relation": [
+          "A01",
+          "A04",
+          "A13"
+        ],
+        "behavior": "Guiado pasivo · continuidad de servicios",
+        "key": "La geometría es funcional y estática. No representa la deformación ni los límites de una cadena OEM."
+      }
+    },
+    {
+      "id": "A16",
+      "name": "Pasador y limitador de par",
+      "short": "Pasadores de estacionamiento",
+      "en": "Stow pins & torque limiters",
+      "category": "Accionamiento",
+      "page": 25,
+      "material": "Acero / actuador",
+      "tag": "Inmovilización",
+      "function": "Inmoviliza el eje en una posición de estacionamiento definida. El limitador protege el mecanismo de inserción frente a un par excesivo.",
+      "detail": "Pasadores AZ y EL con alojamientos, soportes y accionamientos de inserción, destacados en color de seguridad.",
+      "evidence": "Función y antecedentes documentados; forma, ubicación precisa y tamaño representativos.",
+      "inspect": "Alineación, desgaste, inserción real y estado del alojamiento.",
+      "color": "#efb66f",
+      "education": {
+        "description": "Mecanismo de estacionamiento compuesto por pasador, alojamiento, guía y accionamiento de inserción, con protección de par.",
+        "role": "Establece una inmovilización mecánica en una posición de estacionamiento prevista para el eje.",
+        "principle": "La posición del eje debe permitir que pasador y alojamiento coincidan. El accionamiento introduce el pasador; el limitador restringe el par transmitido para evitar forzar un atasco.",
+        "steps": [
+          [
+            "Alinear",
+            "El eje alcanza la posición prevista para que las interfaces puedan acoplarse."
+          ],
+          [
+            "Insertar",
+            "El mecanismo desplaza el pasador guiado hacia su alojamiento."
+          ],
+          [
+            "Confirmar",
+            "Se comprueba el estado mecánico de inserción conforme a la documentación aplicable."
+          ]
+        ],
+        "elements": [
+          "Pasador",
+          "Casquillo guía",
+          "Alojamiento",
+          "Accionamiento y limitador"
+        ],
+        "relation": [
+          "A02",
+          "A04",
+          "A13"
+        ],
+        "behavior": "Inserción lineal · inmovilización",
+        "key": "Estacionamiento, freno e aislamiento de energía tienen funciones diferentes. El visor no implementa una maniobra de bloqueo real."
+      }
+    }
+  ],
+  "parameters": {
+    "units": "m",
+    "primaryDiameter": 12,
+    "secondaryDiameter": 0.75,
+    "panelCount": 120,
+    "ringCount": 5,
+    "focalLength": 4.8,
+    "axisHeight": 5.3,
+    "vertexOffset": 1.25,
+    "secondaryOffset": 4.85,
+    "cabinRadius": 1.63,
+    "cabinLength": 2.6,
+    "panelRings": [
+      12,
+      18,
+      24,
+      30,
+      36
+    ],
+    "ringRadii": [
+      0.7,
+      1.76,
+      2.82,
+      3.88,
+      4.94,
+      6
+    ]
+  },
+  "version": "2.0",
+  "visualDetails": {
+    "scope": "Representative manufacturing detail; no OEM dimensions inferred",
+    "features": [
+      "chamfered housings and fasteners",
+      "annular bearing flanges",
+      "rotor/stator separation with AZ and EL hierarchy",
+      "seals and bushings",
+      "illustrative helical adjuster threads and bellows",
+      "machined hexapod platforms and actuator collars",
+      "segmented rear BUS covers",
+      "open cable carrier links",
+      "encoder graduations",
+      "duct clamps and fan guards"
+    ],
+    "materials": "PBR with powder-coat microtexture, aluminium, machined steel, elastomers and CFRP",
+    "opticalSurface": "analytic paraboloid normals; seams preserved"
+  }
+}

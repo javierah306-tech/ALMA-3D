@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "version": 2,
+  "checks": [
+    "16 selectable systems with descriptions and roles",
+    "16 operating principles with 48 step descriptions",
+    "64 named constituent elements",
+    "related-system navigation",
+    "accessible tabs and keyboard navigation",
+    "120 individual panels and 12m aperture",
+    "six hexapod legs and AZ/EL transforms",
+    "four view modes and explosion",
+    "isolation and escape",
+    "representative A07 close-up and A10 side view",
+    "motion animation awaited by state change",
+    "GLB v2 export with axis hierarchy",
+    "PNG export",
+    "responsive 390px layout and mobile tabs"
+  ],
+  "glbBytes": 13406940,
+  "errors": []
+}

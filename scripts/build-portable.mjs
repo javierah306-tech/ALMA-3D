@@ -1,0 +1,12 @@
+import {build} from 'esbuild';
+import {readFile,writeFile} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const result=await build({absWorkingDir:root,entryPoints:['app.js'],bundle:true,format:'iife',target:'es2020',minify:true,write:false,alias:{three:root+'vendor/three.module.js'}});
+let html=await readFile(new URL('../index.html',import.meta.url),'utf8');
+html=html.replace('<link rel="stylesheet" href="./styles.css">','<style>'+await readFile(new URL('../styles.css',import.meta.url),'utf8')+'</style>');
+html=html.replace('class="brand" href="./"','class="brand" href="./ABRIR-ALMA-3D.html"');
+html=html.replace(/<script type="importmap">[\s\S]*?<\/script>/,'');
+html=html.replace('<script type="module" src="./app.js"></script>',()=>'<script>'+result.outputFiles[0].text.replace(/<\/script/gi,'<\\/script')+'</script>');
+await writeFile(new URL('../ABRIR-ALMA-3D.html',import.meta.url),html);
+console.log('ABRIR-ALMA-3D.html generado: abre el archivo con doble clic.');
